@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="PyMon - Python Monitoring">
+  <meta name="author" content="Sosnovsky">
+  <link rel="icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
+  <title>PyMon | Login</title>
+  <!-- Bootstrap core CSS -->
+  <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="{{ url_for('static', filename='css/signin.css') }}" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+  <form action="{{ url_for('login') }}" class="form-signin" role="form" method=post>
+    <h2 class="form-signin-heading">Please sign in</h2>
+    <label for="login" class="sr-only">Email address</label>
+    <input type="test" name="login" id="login" class="form-control" placeholder="Login" required autofocus>
+    <label for="password" class="sr-only">Password</label>
+    <input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" value="remember-me"> Remember me
+      </label>
+    </div>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button></form>
+</div>
+<!-- Bootstrap core JavaScript -->
+<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+</body>
+</html>

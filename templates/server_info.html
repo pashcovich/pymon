@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+            <ul class="nav nav-sidebar">
+                <li><a href="{{ url_for('index') }}">Dashboard</a></li>
+                <li><a href="{{ url_for('servers') }}">Servers</a></li>
+            </ul>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <h1 class="page-header">Server {{ server[0].name }} details</h1>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    Server ID: {{ server[0].id }}
+                </li>
+                <li class="list-group-item">
+                    Server UID: {{ server[0].srv_id }}
+                </li>
+                <li class="list-group-item">
+                    Server Uptime: {{ server[0].uptime }}
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

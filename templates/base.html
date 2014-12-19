@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="PyMon - Python Monitoring">
+    <meta name="author" content="Sosnovsky">
+    <link rel="icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
+    {% if title %}
+    <title>PyMon - {{title}}</title>
+    {% else %}
+    <title>PyMon</title>
+    {% endif %}
+    <!-- Bootstrap core CSS -->
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="{{ url_for('static', filename='css/dashboard.css') }}" rel="stylesheet">
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="{{ url_for('index') }}">PyMon</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="{{ url_for('settings') }}"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span></a></li>
+			<li>
+              <a class="dropdown-toggle" data-toggle="dropdown" href="">
+					<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+					<span class="caret"></span>
+              </a>
+				<ul class="dropdown-menu" role="menu">
+					<li><a href="{{ url_for('profile') }}">Profile</a></li>
+					<li><a href="{{ url_for('settings') }}">Settings</a></li>
+					<li class="divider"></li>
+					<li><a href="{{ url_for('logout') }}">Logout</a></li>
+				</ul>
+			</li>
+            <li><a href="{{ url_for('logout') }}"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span></a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    {% block content %}{% endblock %}
+    <!-- Bootstrap core JavaScript -->
+    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/holder.js') }}"></script>
+  </body>
+</html>
