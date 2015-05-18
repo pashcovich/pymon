@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+            <ul class="nav nav-sidebar">
+                <li><a href="{{ url_for('index') }}">Dashboard</a></li>
+                <li><a href="{{ url_for('servers') }}">Servers</a></li>
+                <hr>
+                <li ><a href="{{ url_for('stng_groups') }}">Groups</a></li>
+                <li class="active"><a href="{{ url_for('stng_stats') }}">Statistic</a></li>
+            </ul>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <h1 class="page-header">Settings</h1>
+            <hr>
+        </div>
+    </div>
+</div>
+{% endblock %}

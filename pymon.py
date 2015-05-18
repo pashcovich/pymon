@@ -39,6 +39,30 @@ def teardown_request(exception):
     if db is not None:
         db.close()
 
+'''
+_______*
+______/|\
+_____/|0|\
+____/|||0|\
+____/||0||\
+___/|0|||||\
+__/|0|||||0|\
+___/|0||0||\
+__/|||0|||0|\
+_/|0/||0||\||\
+_____|...|
+_____|...|___
+HAPPY_NEW_YEAR
+'''
+
+
+@app.route('/select/<_srv_id>')
+def sel(_srv_id):
+    cur = g.db.execute('select name, srv_id, memory, disk, cpu, processes, uptime  from servers where srv_id = ?', (_srv_id,))
+
+    server = [dict(id=_srv_id, name=row[0], srv_id=row[1], memory=row[2], disk=row[3], cpu=row[4], processes=row[5],
+                   uptime=row[6]) for row in cur.fetchall()]
+    return "%s " % server
 
 # views functions
 @app.route('/')
@@ -48,7 +72,22 @@ def index():
 
 @app.route('/settings')
 def settings():
-    return render_template("settings.html", title="Settings")
+    cur = g.db.execute('select id, name from server_groups')
+    grps = [dict(id=row[0], name=row[1]) for row in cur.fetchall()]
+    return render_template("settings.html", title="Settings", groups=grps)
+
+
+@app.route('/settings/groups')
+def stng_groups():
+    cur = g.db.execute('select id, name from server_groups')
+    grps = [dict(id=row[0], name=row[1]) for row in cur.fetchall()]
+    return render_template("settings_groups.html", title="Settings", groups=grps)
+
+@app.route('/settings/stats')
+def stng_stats():
+    cur = g.db.execute('select id, name from server_groups')
+    grps = [dict(id=row[0], name=row[1]) for row in cur.fetchall()]
+    return render_template("settings_stats.html", title="Settings", groups=grps)
 
 
 @app.route('/profile')
@@ -60,8 +99,7 @@ def profile():
 def servers():
     cur = g.db.execute('select id, name, srv_id, uptime, memory, disk, cpu, processes  from servers')
     srvs = [dict(id=row[0], name=row[1], srv_id=row[2], uptime=row[3], memory=row[4], disk=row[5], cpu=row[6],
-                 processes=row[7]) for row in
-            cur.fetchall()]
+                 processes=row[7]) for row in cur.fetchall()]
     return render_template("servers.html", servers=srvs, title="Servers")
 
 
@@ -89,7 +127,7 @@ def logout():
 
 @app.route('/detail/<serverid>')
 def server_detail(serverid):
-    cur = g.db.execute('select name, srv_id, memory, disk, cpu, processes, uptime  from servers where id = ?', serverid)
+    cur = g.db.execute('select name, srv_id, memory, disk, cpu, processes, uptime  from servers where id = ?', (serverid,))
     server = [dict(id=serverid, name=row[0], srv_id=row[1], memory=row[2], disk=row[3], cpu=row[4], processes=row[5],
                    uptime=row[6]) for row in cur.fetchall()]
     return render_template('server_info.html', server=server, title="Details")

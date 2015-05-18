@@ -51,9 +51,9 @@ def processes():
     return int(result[0])-2
 
 
-l=[("name", srv_name()), ("srv_id", SERVERID), ("memory", meminfo()), ("uptime", uptime()), ("la", la()), ("processes", processes())]
+#l=[("name", srv_name()), ("srv_id", SERVERID), ("memory", meminfo()), ("uptime", uptime()), ("la", la()), ("processes", processes())]
 
-srv_info = dict(list)
+#srv_info = dict(l)
 
 
 srv_info_test = {
@@ -64,9 +64,20 @@ srv_info_test = {
     'disk': '20 | 13.4 | 6 .6',
     'la': '0.01 | 0.02 | 0.01'
 }
+
+test_data = {
+    'name': 'Dummy-text-01',
+    'srv_id': 326,
+    'memory': '1024',
+    'uptime': '8',
+    'disk': '20',
+    'cpu': '57%',
+    'processes': 107
+}
+
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-s.connect(('127.0.0.1', 13373))
-s.send(json.dumps(srv_info_test).encode("utf-8"))
+s.connect(('127.0.0.1', 7330))
+s.send(json.dumps(test_data).encode("utf-8"))
 s.close()
 
 

@@ -25,7 +25,7 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="{{ url_for('settings') }}"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span></a></li>
+            <!-- <li><a href="{{ url_for('settings') }}"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span></a></li> -->
 			<li>
               <a class="dropdown-toggle" data-toggle="dropdown" href="">
 					<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
@@ -33,12 +33,12 @@
               </a>
 				<ul class="dropdown-menu" role="menu">
 					<li><a href="{{ url_for('profile') }}">Profile</a></li>
-					<li><a href="{{ url_for('settings') }}">Settings</a></li>
+					<li><a href="{{ url_for('stng_stats') }}">Settings</a></li>
 					<li class="divider"></li>
 					<li><a href="{{ url_for('logout') }}">Logout</a></li>
 				</ul>
 			</li>
-            <li><a href="{{ url_for('logout') }}"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span></a></li>
+       <!--     <li><a href="{{ url_for('logout') }}"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span></a></li> -->
           </ul>
         </div>
       </div>
